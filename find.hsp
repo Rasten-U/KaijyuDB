@@ -1,0 +1,25 @@
+#include "kaijyu_data.as"
+#include "hsp3cl.as"
+
+notesel data
+noteload "KaijyuDB.csv"
+repeat; notemax
+	search=""
+	input search,20,2
+	found=notefind(search,2)
+
+	noteget stkai,found					//String Temp of KAIjyu
+	split stkai,",",atkai				//Array Temp of KAIjyu
+
+	newmod kai,kaijyu_data,atkai
+	
+	mes getAlias(kai)+" "+getName(kai)
+	mes "身長:"+getHeight(kai)+"m"
+	mes "体重:"+getWeight(kai)+"t"
+	mes "出身:"+getFrom(kai)
+	mes getDescription(kai)
+	
+	delmod kai
+
+	wait 1
+loop

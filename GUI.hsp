@@ -1,0 +1,24 @@
+#include "kaijyu_data.as"
+
+notesel data
+noteload "KaijyuDB.csv"
+
+*draw
+	;delmod kai
+	cls
+	input num
+	button gosub "Move",*draw
+	noteget stkai,num					//String Temp of KAIjyu
+	split stkai,",",atkai				//Array Temp of KAIjyu
+
+	newmod kai,kaijyu_data,atkai
+
+	mes getAlias(kai)+" "+getName(kai)
+	mes "身長:"+getHeight(kai)+"m"
+	mes "体重:"+getWeight(kai)+"t"
+	mes "出身:"+getFrom(kai)
+
+	desc=getDescription(kai)
+	objmode objmode_usefont:mesbox desc,640,355
+	delmod kai
+	stop

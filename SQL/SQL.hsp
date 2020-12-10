@@ -1,0 +1,4 @@
+#include "SQLele.hsp"
+sql_open "KaijyuDB.db"
+sql_q "CREATE TABLE ultra_q_kaijyu(ID char,name nchar(20))"
+sql_close
